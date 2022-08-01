@@ -1,22 +1,22 @@
 -- Keybindings
 
 -- Shortuct for setting keymaps
-function map(mode, shortcut, command)
+local function map(mode, shortcut, command)
   vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
 end
 
 -- nnoremap
-function nmap(shortcut, command)
+local function nmap(shortcut, command)
   map("n", shortcut, command)
 end
 
 -- vnoremap
-function vmap(shortcut, command)
+local function vmap(shortcut, command)
   map("v", shortcut, command)
 end
 
 -- tnoremap
-function tmap(shortcut, command)
+local function tmap(shortcut, command)
   map("t", shortcut, command)
 end
 
@@ -43,7 +43,7 @@ nmap("<C-k>", "<C-w>k")
 nmap("<C-l>", "<C-w>l")
 
 -- Exit edit mode in terminal, I think.
-tmap("<C-q>", "<C-\\><C-n>", { noremap = true, silent = true })
+tmap("<C-q>", "<C-\\><C-n>")
 
 -- Shift + J/K moves selected lines down/up in visual mode
 vmap("J", ":m '>+1<CR>gv=gv")

@@ -24,7 +24,7 @@ return require("packer").startup(function()
     "neovim/nvim-lspconfig",
     config = function()
       -- Load the LSP servers.
-      require("gradox.plugins.lsp_servers")
+      require("gradox.lsp")
     end
   }
 
