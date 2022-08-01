@@ -1,7 +1,7 @@
-require("gradox.plugin_manager")
+require("gradox.packer")
 require("gradox.keybinds")
 require("gradox.settings")
-require("gradox.autocmd")
+require("gradox.autocommands")
 require("gradox.abbreviations")
 require("gradox.colorscheme")
 
