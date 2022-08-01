@@ -63,6 +63,8 @@ vim.opt.listchars = { extends = ">", precedes = "<", nbsp = "¿" }
 -- Highlight certain characters.
 vim.opt.list = true
 
+vim.opt.completeopt = "menu,menuone,noselect"
+
 -- Disable the buildt in Ruby provider to speed up startup times. LSP will
 -- handle Ruby files anyway.
 vim.g["loaded_ruby_provider"] = 0

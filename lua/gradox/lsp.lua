@@ -3,11 +3,16 @@
 
 local nvim_lsp = require("lspconfig")
 
+-- Add additional capabilities supported by nvim-cmp
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
 local on_attach = function(client, bufnr)
   -- Shortcuts for keymaps and option setter.
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
+  -- Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings
@@ -25,6 +30,7 @@ end
 -- Ruby
 -- gem install solargraph
 nvim_lsp.solargraph.setup {
+  capabilities = capabilities,
   on_attach = on_attach,
   flags = {
     debounce_text_changes = 150,
@@ -34,6 +40,7 @@ nvim_lsp.solargraph.setup {
 -- Javascript and typescript
 -- npm -g install typescript typescript-language-server
 nvim_lsp.tsserver.setup {
+  capabilities = capabilities,
   on_attach = on_attach,
 }
 
@@ -44,6 +51,7 @@ nvim_lsp.tsserver.setup {
 -- Vue
 -- npm -g install vls
 nvim_lsp.vuels.setup {
+  capabilities = capabilities,
   on_attach = on_attach,
   settings = {
     vetur = {
@@ -55,11 +63,16 @@ nvim_lsp.vuels.setup {
 
 -- Yaml
 -- npm -g install yaml-language-server
-nvim_lsp.yamlls.setup {}
+nvim_lsp.yamlls.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
 
 -- Lua
 -- brew install lua-language-server
 nvim_lsp.sumneko_lua.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
   settings = {
     Lua = {
       runtime = {

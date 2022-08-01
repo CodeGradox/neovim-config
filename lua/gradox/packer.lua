@@ -10,6 +10,8 @@
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
+local use = require("packer").use
+
 return require("packer").startup(function()
   -- Packer can manage itself.
   use "wbthomason/packer.nvim"
@@ -139,6 +141,14 @@ return require("packer").startup(function()
   -- To delete, invoke with "dz", then follow up with the pattern.
   -- To find, invoke with "f".
   use "ggandor/lightspeed.nvim"
+
+  -- Autocompletion with cmp-nvim
+  use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/nvim-cmp"
+
+  -- Snippets for cmp-nvim
+  use "saadparwaiz1/cmp_luasnip"
+  use "L3MON4D3/LuaSnip"
 
   -- SYNTAX HIGHLIGHTLING
 

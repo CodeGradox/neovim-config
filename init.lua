@@ -4,6 +4,7 @@ require("gradox.settings")
 require("gradox.autocommands")
 require("gradox.abbreviations")
 require("gradox.colorscheme")
+require("gradox.plugins.cmp")
 
 -- Welcome to my neovim config!
 
