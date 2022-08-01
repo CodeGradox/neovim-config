@@ -53,4 +53,8 @@ nvim_lsp.vuels.setup {
   }
 }
 
+-- Yaml
+-- npm -g install yaml-language-server
+nvim_lsp.yamlls.setup {}
+
 -- require("lspconfig").volar.setup {}
