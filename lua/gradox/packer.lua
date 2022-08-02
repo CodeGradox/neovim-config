@@ -1,3 +1,4 @@
+
 -- Use Packer as the plugin manager.
 -- NOTE: Packer must be installed on your machine.
 -- :help packer
@@ -41,7 +42,7 @@ return require("packer").startup(function()
 
   -- Enchance netrw
   -- Press `-` in normal mode to open netrw (:Explore).
-  use "tpope/vim-vinegar"
+  -- use "tpope/vim-vinegar"
 
   -- Git wrapper for vim.
   use "tpope/vim-fugitive"
@@ -149,6 +150,17 @@ return require("packer").startup(function()
   -- Snippets for cmp-nvim
   use "saadparwaiz1/cmp_luasnip"
   use "L3MON4D3/LuaSnip"
+
+  -- File explorer for neovim.
+  use {
+    "kyazdani42/nvim-tree.lua",
+    requires = {
+      "kyazdani42/nvim-web-devicons"
+    },
+    config = function()
+      require("gradox.plugins.nvim-tree")
+    end
+  }
 
   -- SYNTAX HIGHLIGHTLING
 

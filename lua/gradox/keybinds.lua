@@ -51,3 +51,6 @@ vmap("K", ":m '<-2<CR>gv=gv")
 
   -- Vim mappings for copying/pasting text to the os specific clipboard.
 vmap("cp", "\"+y")
+
+-- Toggle NvimTree
+nmap("-", ":NvimTreeToggle<cr>")
