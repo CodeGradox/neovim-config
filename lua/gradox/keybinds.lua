@@ -54,3 +54,4 @@ vmap("cp", "\"+y")
 
 -- Toggle NvimTree
 nmap("-", ":NvimTreeFindFile<cr>")
+nmap("<leader>nn", ":NvimTreeToggle<cr>")
