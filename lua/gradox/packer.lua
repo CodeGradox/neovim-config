@@ -145,6 +145,7 @@ return require("packer").startup(function()
 
   -- Autocompletion with cmp-nvim
   use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/cmp-buffer"
   use "hrsh7th/nvim-cmp"
 
   -- Snippets for cmp-nvim
