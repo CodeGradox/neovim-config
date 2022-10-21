@@ -39,6 +39,10 @@ return require("packer").startup(function()
       require("gradox.plugins.treesitter")
     end
   }
+  -- For debugging.
+  -- :TSInstall query
+  -- Toggle with :TSPlaygroundToggle
+  use "nvim-treesitter/playground"
 
   -- Enchance netrw
   -- Press `-` in normal mode to open netrw (:Explore).
