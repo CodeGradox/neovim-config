@@ -17,7 +17,7 @@ local on_attach = function(client, bufnr)
   -- Mappings
   local opts = { noremap=true, silent=true }
   -- Show line diagnostics.
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
   -- Go to previous diagnostic.
   buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   -- Go to next diagnostic.
