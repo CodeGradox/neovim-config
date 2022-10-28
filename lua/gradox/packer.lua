@@ -145,7 +145,13 @@ return require("packer").startup(function()
   -- Invoke with "s".
   -- To delete, invoke with "dz", then follow up with the pattern.
   -- To find, invoke with "f".
-  use "ggandor/lightspeed.nvim"
+  -- use "ggandor/lightspeed.nvim"
+  use {
+    "ggandor/leap.nvim",
+    config = function ()
+      require("leap").add_default_mappings()
+    end
+  }
 
   -- Autocompletion with cmp-nvim
   use "hrsh7th/cmp-nvim-lsp"
