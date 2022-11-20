@@ -94,7 +94,6 @@ return require("packer").startup(function()
   use "tpope/vim-abolish"
 
   -- Colorschemes
-  use "rktjmp/lush.nvim"
   use "CodeGradox/onehalf-lush"
   -- use "~/projects/onehalf-lush"
 
