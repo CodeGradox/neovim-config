@@ -93,3 +93,10 @@ nvim_lsp.sumneko_lua.setup {
     },
   },
 }
+
+-- JSON
+-- npm -g install vscode-langservers-extracted
+nvim_lsp.jsonls.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
