@@ -55,3 +55,6 @@ vmap("cp", "\"+y")
 -- Toggle NvimTree
 nmap("-", ":NvimTreeFindFile<cr>")
 nmap("<leader>nn", ":NvimTreeToggle<cr>")
+
+-- Gitsigns shortcuts
+nmap("<leader>b", ":Gitsigns blame_line<cr>")

@@ -118,9 +118,9 @@ return require("packer").startup(function()
 
   -- Show git diffs inside a file.
   use {
-    "mhinz/vim-signify",
-    config = function()
-      require("gradox.plugins.signify")
+    "lewis6991/gitsigns.nvim",
+    config = function ()
+      require("gradox.plugins.gitsigns")
     end
   }
 
