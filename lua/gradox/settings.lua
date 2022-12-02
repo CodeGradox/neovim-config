@@ -38,6 +38,9 @@ vim.opt.smartcase = true
 -- Enable mouse suppoert.
 vim.opt.mouse = "a"
 
+-- Show a dialog on what to do with modified buffers when quitting neovim.
+vim.opt.confirm = true
+
 -- Make the window split more intuitive.
 -- Vertical split to the right
 vim.opt.splitright = true
