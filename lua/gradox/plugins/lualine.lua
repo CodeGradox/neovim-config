@@ -2,7 +2,8 @@
 -- The status bar at the bottom of the window.
 require("lualine").setup {
   options = {
-    theme = "ayu_light",
+    -- theme = "ayu_light",
+    theme = "onehalf-lush",
     section_separators = '',
     component_separators = '|',
     -- globalstatus = 3,
