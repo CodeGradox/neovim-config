@@ -182,10 +182,10 @@ return require("packer").startup(function()
   use "slim-template/vim-slim"
 
   -- Support for Ruby on Rails.
-  use {
-    "tpope/vim-rails",
-    config = function()
-      require("gradox.plugins.vim_rails")
-    end
-  }
+  -- use {
+  --   "tpope/vim-rails",
+  --   config = function()
+  --     require("gradox.plugins.vim_rails")
+  --   end
+  -- }
 end)
