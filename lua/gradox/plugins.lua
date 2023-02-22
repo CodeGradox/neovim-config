@@ -1,79 +1,74 @@
+-- Bootstrap lazy.nvim.
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
--- Use Packer as the plugin manager.
--- NOTE: Packer must be installed on your machine.
--- :help packer
-
--- Some of the plugins have an additional configuration step, denoted with the
--- `config = function ...` option. Inside this function, you'll see a `require`
--- call which will load a file/module from the plugin folder. This just means
--- that the plugin will setup additional settings after it has has been loaded.
-
--- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
-
-local use = require("packer").use
-
-return require("packer").startup(function()
+local plugins = {
   -- Packer can manage itself.
-  use "wbthomason/packer.nvim"
+  "wbthomason/packer.nvim",
 
+  -- Optional webicons.
   -- Install the desired font from https://www.nerdfonts.com/font-downloads
-  -- Source Code Pro Nerd Font
-  use "kyazdani42/nvim-web-devicons" -- optional webicons
+  -- Source Code Pro Nerd Font.
+  "kyazdani42/nvim-web-devicons",
 
   -- A collection of common configurations for Neovim"s built-in language
   -- server client.
-  use {
+  {
     "neovim/nvim-lspconfig",
     config = function()
       -- Load the LSP servers.
       require("gradox.lsp")
     end
-  }
+  },
 
   -- Enable treesitter. It"s still considered experimental.
-  use {
+  {
     "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
+    build = ":TSUpdate",
     config = function()
       require("gradox.plugins.treesitter")
     end
-  }
+  },
   -- For debugging.
   -- :TSInstall query
   -- Toggle with :TSPlaygroundToggle
-  use "nvim-treesitter/playground"
-
-  -- Enchance netrw
-  -- Press `-` in normal mode to open netrw (:Explore).
-  -- use "tpope/vim-vinegar"
-
+  "nvim-treesitter/playground",
   -- Git wrapper for vim.
-  use "tpope/vim-fugitive"
+  "tpope/vim-fugitive",
 
   -- Easily manage surrounding parentheses, brackets, quoutes, HTML tags and
   -- more.
   -- Keys: cs<char_from><char_to>
   -- Example: cs"" to change surrounding " to "
-  use "tpope/vim-surround"
+  "tpope/vim-surround",
 
   -- Automatically end certain structutes such as "end" in Ruby.
-  use "tpope/vim-endwise"
+  "tpope/vim-endwise",
 
   -- Automatically end quotes, parenthesis, brackets and more.
-  use "raimondi/delimitmate"
+  "raimondi/delimitmate",
 
   -- Comment stuff out.
   -- Toggle linewise comment: gc
   -- Toggle blockwise comment: gb
   -- Uncomment: gcgc
-  -- use "tpope/vim-commentary"
-  use {
+  -- "tpope/vim-commentary"
+  {
     'numToStr/Comment.nvim',
     config = function()
       require('Comment').setup()
     end
-  }
+  },
 
   -- Extends support for abbreviations, substitutions and coercions.
   -- Abbreviation: Create powerful abbreviations
@@ -91,101 +86,98 @@ return require("packer").startup(function()
   -- cr.       - dot.case
   -- cr<space> - space case
   -- crt       - Title Case
-  use "tpope/vim-abolish"
+  "tpope/vim-abolish",
 
   -- Colorschemes
-  use "CodeGradox/onehalf-lush"
-  -- use "~/projects/onehalf-lush"
+  {
+    "CodeGradox/onehalf-lush",
+    lazy = false,
+  },
+  -- "~/projects/onehalf-lush"
 
   -- Telescope, a highly extendable fuzzy finder.
-  use {
+  {
     "nvim-telescope/telescope.nvim",
-    requires = "nvim-lua/plenary.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      -- Native C port of fzf.
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+      config = function()
+        require("telescope").load_extension("fzf")
+      end,
+    },
     config = function()
       require("gradox.plugins.telescope")
     end
-  }
-  -- Native C port of fzf.
-  use {
-    "nvim-telescope/telescope-fzf-native.nvim",
-    run = "make",
-    branch = "main",
-    requires = "nvim-telescope/telescope.nvim",
-    config = function()
-      require("gradox.plugins.telescope_fzf")
-    end
-  }
+  },
 
   -- Show git diffs inside a file.
-  use {
+  {
     "lewis6991/gitsigns.nvim",
     config = function ()
       require("gradox.plugins.gitsigns")
     end
-  }
+  },
 
   -- Status/tabline, at the bottom of the editor.
-  use {
+  {
     "nvim-lualine/lualine.nvim",
     config = function()
       require("gradox.plugins.lualine")
     end
-  }
+  },
 
   -- Visualize indentation.
-  use {
+  {
     "lukas-reineke/indent-blankline.nvim",
     config = function()
       require("gradox.plugins.indent_blankline")
     end
-  }
+  },
 
   -- A cutting-edge motion plugin.
   -- Invoke with "s".
   -- To delete, invoke with "dz", then follow up with the pattern.
   -- To find, invoke with "f".
-  -- use "ggandor/lightspeed.nvim"
-  use {
+  -- "ggandor/lightspeed.nvim"
+  {
     "ggandor/leap.nvim",
     config = function ()
       require("leap").add_default_mappings()
     end
-  }
+  },
 
   -- Autocompletion with cmp-nvim
-  use "hrsh7th/cmp-nvim-lsp"
-  use "hrsh7th/cmp-buffer"
-  use "hrsh7th/nvim-cmp"
+  "hrsh7th/cmp-nvim-lsp",
+  "hrsh7th/cmp-buffer",
+  "hrsh7th/nvim-cmp",
 
   -- Snippets for cmp-nvim
-  use "saadparwaiz1/cmp_luasnip"
-  use "L3MON4D3/LuaSnip"
+  "saadparwaiz1/cmp_luasnip",
+  "L3MON4D3/LuaSnip",
 
   -- File explorer for neovim.
-  use {
+  {
     "kyazdani42/nvim-tree.lua",
-    requires = {
+    dependencies = {
       "kyazdani42/nvim-web-devicons"
     },
     config = function()
       require("gradox.plugins.nvim-tree")
     end
-  }
+  },
 
   -- SYNTAX HIGHLIGHTLING
 
   -- Highlight cells in CSV files.
   -- Allows me to query data in CSV with a SQL like syntax.
-  use "mechatroner/rainbow_csv"
+  "mechatroner/rainbow_csv",
 
   -- Slim template language.
-  use "slim-template/vim-slim"
+  "slim-template/vim-slim",
+}
 
-  -- Support for Ruby on Rails.
-  -- use {
-  --   "tpope/vim-rails",
-  --   config = function()
-  --     require("gradox.plugins.vim_rails")
-  --   end
-  -- }
-end)
+local opts = {}
+
+require("lazy").setup(plugins, opts)

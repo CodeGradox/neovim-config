@@ -1,5 +1,5 @@
-require("gradox.packer")
 require("gradox.keybinds")
+require("gradox.plugins")
 require("gradox.settings")
 require("gradox.autocommands")
 require("gradox.abbreviations")
