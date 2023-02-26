@@ -13,9 +13,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-  -- Packer can manage itself.
-  "wbthomason/packer.nvim",
-
   -- Optional webicons.
   -- Install the desired font from https://www.nerdfonts.com/font-downloads
   -- Source Code Pro Nerd Font.
@@ -92,6 +89,7 @@ local plugins = {
   {
     "CodeGradox/onehalf-lush",
     lazy = false,
+    priority = 1000,
   },
   -- "~/projects/onehalf-lush"
 
@@ -178,6 +176,15 @@ local plugins = {
   "slim-template/vim-slim",
 }
 
-local opts = {}
+local opts = {
+  checker = {
+    -- Automatically check for plugin updates.
+    enabled = true,
+    concurrency = 8,
+    notify = false,
+    -- Check for updates every hour.
+    frequency = 3600,
+  }
+}
 
 require("lazy").setup(plugins, opts)
