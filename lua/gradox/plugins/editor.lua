@@ -26,20 +26,23 @@ return {
   -- crt       - Title Case
   "tpope/vim-abolish",
 
-  -- Automatically end certain structutes such as "end" in Ruby.
-  -- "tpope/vim-endwise",
-
   -- Automatically end quotes, parenthesis, brackets and more.
-  "raimondi/delimitmate",
+  {
+    "echasnovski/mini.nvim",
+    version = false,
+    config = function ()
+      require("mini.pairs").setup()
+    end
+  },
 
   -- Comment stuff out.
   -- Toggle linewise comment: gc
   -- Toggle blockwise comment: gb
   -- Uncomment: gcgc
   {
-    'numToStr/Comment.nvim',
+    "numToStr/Comment.nvim",
     config = function()
-      require('Comment').setup()
+      require("Comment").setup()
     end
   },
 
