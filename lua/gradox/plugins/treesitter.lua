@@ -15,6 +15,7 @@ return {
     build = ":TSUpdate",
     config = function()
       require("nvim-treesitter.configs").setup {
+        indent = true,
         highlight = {
           -- Enable better syntax highlights.
           enable = true,
