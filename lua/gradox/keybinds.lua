@@ -26,7 +26,7 @@ vim.g.mapleader = " "
 -- Find files using Telescope command-line sugar.
 nmap("<leader>p", ":Telescope git_files<cr>")
 nmap("<leader>p", ":Telescope git_files<cr>")
-nmap("<leader>o", ":Telescope live_grep<cr>")
+nmap("<leader>o", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 nmap("<leader>gco", ":Telescope git_branches<cr>")
 
 -- Quickfix list shortcuts.
