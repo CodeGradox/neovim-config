@@ -1,11 +1,3 @@
-require("gradox.keybinds")
-require("gradox.plugins")
-require("gradox.settings")
-require("gradox.autocommands")
-require("gradox.abbreviations")
-require("gradox.colorscheme")
-require("gradox.plugins.cmp")
-
 -- Welcome to my neovim config!
 
 -- The config is written in Lua and has been split into multiple files. The
@@ -23,3 +15,5 @@ require("gradox.plugins.cmp")
 -- https://vonheikemen.github.io/devlog/tools/configuring-neovim-using-lua
 -- https://www.notonlycode.org/neovim-lua-config
 -- https://github.com/numToStr/dotfiles/tree/master/neovim/.config/nvim
+
+require("gradox")

@@ -1,4 +1,4 @@
--- NOTE: Plugins are loaded by gradox.plugin_manager.lua
+-- NOTE: Plugins are loaded by gradox.plugins.lua
 -- Language Server Protocol (LSP)
 -- Available language servers:
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
