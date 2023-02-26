@@ -26,11 +26,12 @@ return {
   -- crt       - Title Case
   "tpope/vim-abolish",
 
-  -- Automatically end quotes, parenthesis, brackets and more.
+  -- Collection of helpful plugins.
   {
     "echasnovski/mini.nvim",
     version = false,
     config = function ()
+      -- Automatically end quotes, parenthesis, brackets and more.
       require("mini.pairs").setup()
     end
   },
