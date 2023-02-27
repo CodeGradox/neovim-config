@@ -2,6 +2,7 @@ return {
   -- Status/tabline, at the bottom of the editor.
   {
     "nvim-lualine/lualine.nvim",
+    lazy = false,
     config = function()
       require("lualine").setup {
         options = {
@@ -49,6 +50,7 @@ return {
   -- Show git diffs inside a file.
   {
     "lewis6991/gitsigns.nvim",
+    lazy = false,
     config = function ()
       require('gitsigns').setup()
     end
@@ -57,6 +59,7 @@ return {
   -- Visualize indentation.
   {
     "lukas-reineke/indent-blankline.nvim",
+    lazy = false,
     config = function()
       require("indent_blankline").setup {
         space_char_blankline = " ",
