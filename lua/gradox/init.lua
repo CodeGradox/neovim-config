@@ -25,9 +25,9 @@ local opts = {
 
 -- Setup the plugins!
 require("gradox.keybinds")
-require("lazy").setup("gradox.plugins", opts)
-require("gradox.colorscheme")
-require("gradox.settings")
 require("gradox.autocommands")
+require("lazy").setup("gradox.plugins", opts)
+require("gradox.settings")
+require("gradox.colorscheme")
 require("gradox.abbreviations")
 require("gradox.cmp")

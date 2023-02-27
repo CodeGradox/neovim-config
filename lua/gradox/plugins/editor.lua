@@ -27,12 +27,18 @@ return {
   "tpope/vim-abolish",
 
   -- Collection of helpful plugins.
+  -- {
+  --   "echasnovski/mini.nvim",
+  --   version = false,
+  --   config = function ()
+  --     -- Automatically end quotes, parenthesis, brackets and more.
+  --     require("mini.pairs").setup()
+  --   end
+  -- },
   {
-    "echasnovski/mini.nvim",
-    version = false,
-    config = function ()
-      -- Automatically end quotes, parenthesis, brackets and more.
-      require("mini.pairs").setup()
+    "windwp/nvim-autopairs",
+    config = function()
+      require("nvim-autopairs").setup()
     end
   },
 
