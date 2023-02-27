@@ -20,12 +20,14 @@ return {
     config = function()
       require("nvim-treesitter.configs").setup {
         indent = {
-          enable = true,
+          -- There seems to be a bug in most languages where treesitter indent is not
+          -- good enough.
+          enable = false,
         },
         highlight = {
           -- Enable better syntax highlights.
           enable = true,
-          additional_vim_regex_highlighting = false,
+          additional_vim_regex_highlighting = true,
         },
         textobjects = {
           select = {
