@@ -30,7 +30,6 @@ return {
               -- Show pending updates.
               require("lazy.status").updates,
               cond = require("lazy.status").has_updates,
-              color = { fg = "#ff9e64" },
             },
             "diagnostics",
             "encoding",
