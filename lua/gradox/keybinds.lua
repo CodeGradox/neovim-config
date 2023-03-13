@@ -53,8 +53,13 @@ vmap("K", ":m '<-2<CR>gv=gv")
 vmap("cp", "\"+y")
 
 -- Toggle NvimTree
-nmap("-", ":NvimTreeFindFile<cr>")
-nmap("<leader>nn", ":NvimTreeToggle<cr>")
+vim.keymap.set("n", "-", function()
+  return require("nvim-tree.api").tree.find_file({ open = true, focus = true })
+end, { noremap = true, silent = true })
+
+vim.keymap.set("n", "<leader>nn", function()
+  return require("nvim-tree.api").tree.toggle()
+end, { noremap = true, silent = true })
 
 -- Gitsigns shortcuts
 nmap("<leader>b", ":Gitsigns blame_line<cr>")

@@ -9,7 +9,7 @@ return {
           theme = "onehalf-lush",
           section_separators = '',
           component_separators = '|',
-          -- globalstatus = 3,
+          globalstatus = 3,
         },
         sections = {
           lualine_b = {
@@ -50,7 +50,7 @@ return {
   {
     "lewis6991/gitsigns.nvim",
     lazy = false,
-    config = function ()
+    config = function()
       require('gitsigns').setup()
     end
   },
@@ -69,9 +69,9 @@ return {
 
   -- File explorer for neovim.
   {
-    "kyazdani42/nvim-tree.lua",
+    "nvim-tree/nvim-tree.lua",
     dependencies = {
-      "kyazdani42/nvim-web-devicons"
+      "nvim-tree/nvim-web-devicons"
     },
     config = function()
       require("nvim-tree").setup {
@@ -81,4 +81,13 @@ return {
       }
     end
   },
+
+  -- Dim inactive portions of the code being edited.
+  {
+    "folke/twilight.nvim",
+    cmd = { "Twilight", "TwilightEnable", "TwilightDisable" },
+    config = function ()
+      require("twilight").setup()
+    end
+  }
 }
