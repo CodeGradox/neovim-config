@@ -28,6 +28,12 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 end
 
+vim.diagnostic.config({
+  virtual_text  = true,
+  -- Don't use the fancy LSP lines by default. Toggle it with a keybind.
+  virtual_lines = false,
+})
+
 -- Ruby
 -- gem install solargraph
 nvim_lsp.solargraph.setup {

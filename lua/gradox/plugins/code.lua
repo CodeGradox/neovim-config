@@ -16,4 +16,11 @@ return {
 
   -- Slim template language.
   "slim-template/vim-slim",
+
+  {
+    "ErichDonGubler/lsp_lines.nvim",
+    config = function()
+      require("lsp_lines").setup()
+    end
+  }
 }
