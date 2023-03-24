@@ -2,6 +2,26 @@ return {
   -- Git wrapper for vim.
   "tpope/vim-fugitive",
 
+  {
+    "sindrets/diffview.nvim",
+    cmd = {
+      "DiffviewClose",
+      "DiffviewFileHistory",
+      "DiffviewFocusFiles",
+      "DiffviewLog",
+      "DiffviewOpen",
+      "DiffviewRefresh",
+      "DiffviewToggleFiles",
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      vim.opt.fillchars = vim.opt.fillchars + 'diff:╱'
+      require("diffview").setup()
+    end
+  },
+
   -- Easily manage surrounding parentheses, brackets, quoutes, HTML tags and
   -- more.
   -- Keys: cs<char_from><char_to>

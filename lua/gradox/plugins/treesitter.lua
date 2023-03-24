@@ -64,5 +64,8 @@ return {
   -- For debugging.
   -- :TSInstall query
   -- Toggle with :TSPlaygroundToggle
-  "nvim-treesitter/playground",
+  {
+    "nvim-treesitter/playground",
+    cmd = { "TSPlaygroundToggle" }
+  },
 }
