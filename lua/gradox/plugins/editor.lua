@@ -18,7 +18,13 @@ return {
     },
     config = function()
       vim.opt.fillchars = vim.opt.fillchars + 'diff:╱'
-      require("diffview").setup()
+      require("diffview").setup({
+        view = {
+          merge_tool = {
+            layout = "diff3_mixed",
+          }
+        }
+      })
     end
   },
 
