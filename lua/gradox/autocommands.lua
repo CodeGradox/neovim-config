@@ -19,3 +19,10 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufEnter" }, {
   pattern = { "*.thor", "*.caracal" },
   command = "set syntax=ruby",
 })
+
+-- Use internal formatting for bingings like `gq`.
+vim.api.nvim_create_autocmd({ "LspAttach" }, {
+  callback = function(args)
+    vim.bo[args.buf].formatexpr = nil
+  end
+})
