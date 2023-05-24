@@ -14,9 +14,9 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   command = "setlocal tabstop=4 shiftwidth=4 softtabstop=4",
 })
 
--- Caracal and thor (ruby)
+-- Files which uses Ruby syntax.
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufEnter" }, {
-  pattern = { "*.thor", "*.caracal" },
+  pattern = { "*.thor", "*.caracal", "*.jbuilder" },
   command = "set syntax=ruby",
 })
 
