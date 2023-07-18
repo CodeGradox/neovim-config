@@ -26,3 +26,8 @@ vim.api.nvim_create_autocmd({ "LspAttach" }, {
     vim.bo[args.buf].formatexpr = nil
   end
 })
+
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+  pattern = { "*.csv" },
+  command = "setlocal nowrap",
+})
