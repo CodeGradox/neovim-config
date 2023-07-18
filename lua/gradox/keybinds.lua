@@ -23,6 +23,9 @@ end
 -- Map leader key to space
 vim.g.mapleader = " "
 
+-- Open Telescope
+nmap("<leader>t", ":Telescope<cr>")
+
 -- Find files using Telescope command-line sugar.
 nmap("<leader>p", ":Telescope git_files<cr>")
 nmap("<leader>p", ":Telescope git_files<cr>")
