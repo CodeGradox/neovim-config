@@ -31,7 +31,13 @@ return {
         filetype = {
           sql = {
             require("formatter.filetypes.sql").pgformat,
-          }
+          },
+          ruby = {
+            require("formatter.filetypes.ruby").rubocop,
+          },
+          -- javascript = {
+          --   require("formatter.filetypes.javascript").prettier,
+          -- },
         }
       })
     end
