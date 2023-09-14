@@ -22,5 +22,18 @@ return {
     config = function()
       require("lsp_lines").setup()
     end
+  },
+
+  {
+    "mhartington/formatter.nvim",
+    config = function()
+      require("formatter").setup({
+        filetype = {
+          sql = {
+            require("formatter.filetypes.sql").pgformat,
+          }
+        }
+      })
+    end
   }
 }
