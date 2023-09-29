@@ -18,7 +18,15 @@ return {
     },
     build = ":TSUpdate",
     config = function()
-      require("nvim-treesitter.configs").setup {
+      require("nvim-treesitter.configs").setup({
+        -- The following parses will always be installed.
+        ensure_installed = { "lua", "ruby", "javascript", "css", "html", "json", "yaml", "fish", "bash", "python" },
+        ignore_install = {},
+        -- Automatically install parsers for supported files.
+        auto_install = true,
+        -- Install parsers synchronously (only applied to `ensure_installed`)
+        sync_install = false,
+        modules = {},
         indent = {
           -- There seems to be a bug in most languages where treesitter indent is not
           -- good enough.
@@ -58,7 +66,7 @@ return {
         endwise = {
           enable = true,
         }
-      }
+      })
     end
   },
   -- For debugging.
