@@ -2,12 +2,17 @@ return {
   -- Visualize indentation.
   {
     "lukas-reineke/indent-blankline.nvim",
-    lazy = false,
+    main = "ibl",
     config = function()
-      require("indent_blankline").setup {
-        space_char_blankline = " ",
-        show_current_context = true,
-      }
-    end
+      require("ibl").setup({
+        scope = {
+          enabled = true,
+          highlight = {
+            -- Defined by my color scheme.
+            "IndentBlanklineContextChar",
+          }
+        },
+      })
+    end,
   }
 }
