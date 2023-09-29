@@ -65,8 +65,10 @@ return {
           -- CTRL + k to go to previous suggestion
           keymap = {
             accept = "<C-l>",
-            next = "<C-j>",
-            prev = "<C-k>",
+            next   = "<C-j>",
+            prev   = "<C-k>",
+            accept_word = "<C-f>",
+            accept_line = "<C-d>",
           },
         },
         filetypes = {
@@ -77,6 +79,8 @@ return {
           html       = true,
           erb        = true,
           sql        = true,
+          yaml       = true,
+          markdown   = true,
         }
       })
     end,
