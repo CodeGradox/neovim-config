@@ -11,6 +11,7 @@ return {
         },
         suggestion = {
           auto_trigger = true,
+          debounce_ms = 150,
           -- CTRL + l to accept suggestion
           -- CTRL + j to go to next suggestion
           -- CTRL + k to go to previous suggestion
