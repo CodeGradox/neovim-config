@@ -25,14 +25,18 @@ return {
         highlight_unwanted_chars()
       end
 
-      set_light_mode()
+      local defaultModeLight = true
 
-      -- I think the background is set to dark by default.
-      -- if vim.api.nvim_get_option("background") == "dark" then
-      --   set_dark_mode()
-      -- else
-      --   set_light_mode()
-      -- end
+      -- On macOS, check if the default mode is light or dark.
+      if vim.loop.os_uname().sysname == "Darwin" then
+        defaultModeLight = vim.fn.system("defaults read -g AppleInterfaceStyle") ~= "Dark\n"
+      end
+
+      if defaultModeLight then
+        set_light_mode()
+      else
+        set_dark_mode()
+      end
 
       local auto_dark_mode = require('auto-dark-mode')
 
