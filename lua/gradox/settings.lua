@@ -26,16 +26,16 @@ vim.opt.cursorline = true
 -- Rules can be overwritten by auto commands, depending on the filetype of the
 -- current buffer.
 vim.opt.softtabstop = 2
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.shiftround = true
-vim.opt.expandtab = true
-vim.opt.autoindent = true
+vim.opt.tabstop     = 2
+vim.opt.shiftwidth  = 2
+vim.opt.shiftround  = true
+vim.opt.expandtab   = true
+vim.opt.autoindent  = true
 vim.opt.smartindent = true
 
 -- Use smartcase when searching.
 vim.opt.ignorecase = true
-vim.opt.smartcase = true
+vim.opt.smartcase  = true
 
 -- Enable mouse suppoert.
 vim.opt.mouse = "a"

@@ -1,6 +1,6 @@
 -- Autocompletion with cmp-nvim
 
-local cmp = require("cmp")
+local cmp     = require("cmp")
 local luasnip = require("luasnip")
 
 cmp.setup {
