@@ -17,10 +17,16 @@ return {
 
   -- Highlight cells in CSV files.
   -- Allows me to query data in CSV with a SQL like syntax.
-  "mechatroner/rainbow_csv",
+  {
+    "mechatroner/rainbow_csv",
+    ft = "csv",
+  },
 
   -- Slim template language.
-  "slim-template/vim-slim",
+  {
+    "slim-template/vim-slim",
+    ft = "slim",
+  },
 
   -- Git wrapper for vim.
   -- "tpope/vim-fugitive",
