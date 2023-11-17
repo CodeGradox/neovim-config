@@ -1,6 +1,7 @@
 return {
   {
     "mhartington/formatter.nvim",
+    cmd = { "Format", "FormatWrite" },
     config = function()
       require("formatter").setup({
         -- Formatters: https://github.com/mhartington/formatter.nvim/tree/master/lua/formatter/filetypes
