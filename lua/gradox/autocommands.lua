@@ -16,7 +16,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 
 -- Files which uses Ruby syntax.
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufEnter" }, {
-  pattern = { "*.thor", "*.caracal", "*.jbuilder", "*.axlsx" },
+  pattern = { "*.thor", "*.caracal", "*.jbuilder", "*.axlsx", "*.cap" },
   command = "set syntax=ruby",
 })
 
