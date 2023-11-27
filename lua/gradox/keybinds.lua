@@ -74,3 +74,8 @@ vim.keymap.set("n", "<space>l", function()
     virtual_lines = not current_value,
   })
 end, { desc = "Toggle LSP lines"})
+
+-- Lazygit
+vim.keymap.set("n", "<leader>gg", function()
+  vim.cmd("LazyGit")
+end, { desc = "LazyGit"})

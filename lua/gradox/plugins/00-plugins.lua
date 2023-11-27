@@ -29,7 +29,7 @@ return {
   },
 
   -- Git wrapper for vim.
-  "tpope/vim-fugitive",
+  -- "tpope/vim-fugitive",
 
   -- Easily manage surrounding parentheses, brackets, quoutes, HTML tags and
   -- more.
