@@ -10,6 +10,11 @@ return {
   },
 
   -- Enable treesitter. It"s still considered experimental.
+  --
+  -- To debug:
+  --    :Inspect      - to show the highlight groups under the cursor
+  --    :InspectTree  - to show the parsed syntax tree ("TSPlayground")
+  --    :EditQuery    - to open the Live Query Editor (Nvim 0.10+)
   {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
@@ -68,12 +73,5 @@ return {
         }
       })
     end
-  },
-  -- For debugging.
-  -- :TSInstall query
-  -- Toggle with :TSPlaygroundToggle
-  {
-    "nvim-treesitter/playground",
-    cmd = { "TSPlaygroundToggle" }
   },
 }
