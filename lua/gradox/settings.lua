@@ -63,10 +63,8 @@ vim.opt.inccommand = "split"
 vim.opt.grepprg = "rg --vimgrep --smart-case --follow"
 
 -- Highlights weird whitespaces such as 0x00A0 non-breaking space.
--- vim.opt.listchars = "tab:> ,extends:>,precedes:<,nbsp:¿"
-vim.opt.listchars = { extends = ">", precedes = "<", nbsp = "¿" }
--- Highlight certain characters.
-vim.opt.list = true
+vim.cmd('highlight NonBreakSpace ctermfg=red guifg=red')
+vim.fn.matchadd('NonBreakSpace', '\\u00A0')
 
 vim.opt.completeopt = "menu,menuone,noselect"
 
