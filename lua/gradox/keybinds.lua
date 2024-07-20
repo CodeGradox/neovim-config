@@ -30,8 +30,17 @@ nmap("<leader>t", ":Telescope<cr>")
 nmap("<leader>p", ":Telescope git_files<cr>")
 nmap("<leader>p", ":Telescope git_files<cr>")
 nmap("<leader>o", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
-nmap("<leader>gco", ":Telescope git_branches<cr>")
+-- nmap("<leader>gco", ":Telescope git_branches<cr>")
 
+-- Search for the text under the cursor.
+vim.keymap.set("n", "<leader>s", function()
+  require("telescope-live-grep-args.shortcuts").grep_word_under_cursor({ postfix = "" })
+end, { desc = "Search word or selection"})
+
+-- Search for the text under the cursor.
+vim.keymap.set("v", "<leader>s", function()
+  require("telescope-live-grep-args.shortcuts").grep_visual_selection({ postfix = "" })
+end, { desc = "Search word or selection"})
 -- Quickfix list shortcuts.
 --Next item.
 nmap("<leader>j", ":cn<CR>")
