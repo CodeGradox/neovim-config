@@ -25,7 +25,19 @@ return {
     config = function()
       require("nvim-treesitter.configs").setup({
         -- The following parses will always be installed.
-        ensure_installed = { "lua", "ruby", "javascript", "css", "html", "json", "yaml", "fish", "bash", "python" },
+        ensure_installed = {
+          "bash",
+          "css",
+          "fish",
+          "go",
+          "html",
+          "javascript",
+          "json",
+          "lua",
+          "python",
+          "ruby",
+          "yaml",
+        },
         ignore_install = {},
         -- Automatically install parsers for supported files.
         auto_install = true,

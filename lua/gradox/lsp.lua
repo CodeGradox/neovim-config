@@ -75,6 +75,17 @@ local servers = {
     },
   },
   jsonls = {},
+  gopls = {
+    settings = {
+      gopls = {
+        analyses = {
+          unusedparams = true,
+        },
+        staticcheck = true,
+        gofumpt = true,
+      },
+    },
+  },
 }
 
 -- Loop through the servers table and set up each server

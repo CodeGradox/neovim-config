@@ -2,16 +2,41 @@
 
 -- Trim trailing whitespace on save.
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  pattern = { "*" },
-  command = "%s/\\s\\+$//e",
+  pattern = "*",
+  callback = function ()
+    local filetype = vim.bo.filetype
+    if filetype == "rust" or filetype == "go" then
+      vim.lsp.buf.format()
+    else
+      vim.cmd([[%s/\\s\\+$//e]])
+    end
+  end
 })
 
--- Overwrite global rules for certain filetypes.
--- Rust
--- vim.cmd [[autocmd filetype rs setlocal tabstop=4 shiftwidth=4 softtabstop=4]]
+-- Custom rules for rust.
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "rs" },
-  command = "setlocal tabstop=4 shiftwidth=4 softtabstop=4",
+  pattern = "rust",
+  callback = function()
+    vim.opt.softtabstop = 4
+    vim.opt.tabstop     = 4
+    vim.opt.shiftwidth  = 4
+  end
+})
+
+-- Custom rules for go.
+vim.api.nvim_create_autocmd({ "Filetype" }, {
+  pattern = "go",
+  callback = function()
+    vim.opt.softtabstop = 4
+    vim.opt.tabstop     = 4
+    vim.opt.shiftwidth  = 4
+    vim.opt.expandtab   = false
+  end
+})
+
+vim.api.nvim_create_autocmd({ "Filetype" }, {
+  pattern = { "csv" },
+  command = "setlocal nowrap",
 })
 
 -- Files which uses Ruby syntax.
@@ -25,9 +50,4 @@ vim.api.nvim_create_autocmd({ "LspAttach" }, {
   callback = function(args)
     vim.bo[args.buf].formatexpr = nil
   end
-})
-
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-  pattern = { "*.csv" },
-  command = "setlocal nowrap",
 })
