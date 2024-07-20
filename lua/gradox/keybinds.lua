@@ -41,6 +41,7 @@ end, { desc = "Search word or selection"})
 vim.keymap.set("v", "<leader>s", function()
   require("telescope-live-grep-args.shortcuts").grep_visual_selection({ postfix = "" })
 end, { desc = "Search word or selection"})
+
 -- Quickfix list shortcuts.
 --Next item.
 nmap("<leader>j", ":cn<CR>")
@@ -75,14 +76,6 @@ end, { noremap = true, silent = true })
 
 -- Gitsigns shortcuts
 nmap("<leader>b", ":Gitsigns blame_line<cr>")
-
-vim.keymap.set("n", "<space>l", function()
-  local current_value = vim.diagnostic.config().virtual_lines
-  vim.diagnostic.config({
-    virtual_text = current_value,
-    virtual_lines = not current_value,
-  })
-end, { desc = "Toggle LSP lines"})
 
 -- Lazygit
 vim.keymap.set("n", "<leader>gg", function()
