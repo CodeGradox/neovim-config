@@ -9,23 +9,23 @@ local nvim_lsp = require("lspconfig")
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local on_attach = function(client, bufnr)
-  -- Shortcuts for keymaps and option setter.
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
   -- Enable completion triggered by <c-x><c-o>
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings
-  local opts = { noremap=true, silent=true }
+  local opts = { buffer = bufnr, remap = true, silent = true }
+  -- Go to definition.
+  vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
+  -- Hover over symbol to see documentation.
+  vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
   -- Show line diagnostics.
-  buf_set_keymap('n', '<space>de', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+  vim.keymap.set('n', '<space>l', function() vim.diagnostic.open_float() end, opts)
   -- Go to previous diagnostic.
-  buf_set_keymap('n', '<space>dn', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+  vim.keymap.set('n', '<space>dn', function() vim.diagnostic.goto_prev() end, opts)
   -- Go to next diagnostic.
-  buf_set_keymap('n', '<space>dp', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+  vim.keymap.set('n', '<space>dp', function() vim.diagnostic.goto_next() end, opts)
   -- Show all diagnostics.
-  buf_set_keymap('n', '<space>dq', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+  vim.keymap.set('n', '<space>dq', function() vim.diagnostic.setloclist() end, opts)
 end
 
 vim.diagnostic.config({
