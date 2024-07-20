@@ -19,13 +19,13 @@ local on_attach = function(client, bufnr)
   -- Mappings
   local opts = { noremap=true, silent=true }
   -- Show line diagnostics.
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+  buf_set_keymap('n', '<space>de', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
   -- Go to previous diagnostic.
-  buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', '<space>dn', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   -- Go to next diagnostic.
-  buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<space>dp', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
   -- Show all diagnostics.
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+  buf_set_keymap('n', '<space>dq', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 end
 
 vim.diagnostic.config({
@@ -34,77 +34,52 @@ vim.diagnostic.config({
   virtual_lines = false,
 })
 
--- Ruby
--- gem install solargraph
-nvim_lsp.solargraph.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-  flags = {
-    debounce_text_changes = 150,
-  }
-}
+-- Configuration for diagnostic settings.
+vim.diagnostic.config({
+  virtual_text  = true,
+  virtual_lines = false,
+})
 
--- Javascript and typescript
--- npm -g install typescript typescript-language-server
-nvim_lsp.tsserver.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
-
--- ESLint
--- npm -g install eslint
--- nvim_lsp.eslint.setup {}
-
--- Vue
--- npm -g install vls
-nvim_lsp.vuels.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-  settings = {
-    vetur = {
-      -- Vls requires a jsconfig.json or tsconfig.json. Ignore that requirement.
-      ignoreProjectWarning = true
+-- Table of LSP servers and their configurations.
+local servers = {
+  solargraph = {
+    flags = {
+      debounce_text_changes = 150,
     }
-  }
-}
-
--- Yaml
--- npm -g install yaml-language-server
-nvim_lsp.yamlls.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
-
--- Lua
--- brew install lua-language-server
-nvim_lsp.lua_ls.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
+  },
+  tsserver = {},
+  vuels = {
+    settings = {
+      vetur = {
+        ignoreProjectWarning = true
+      }
+    }
+  },
+  yamlls = {},
+  lua_ls = {
+    settings = {
+      Lua = {
+        runtime = {
+          version = 'LuaJIT',
+        },
+        diagnostics = {
+          globals = {'vim'},
+        },
+        workspace = {
+          library = vim.api.nvim_get_runtime_file("", true),
+        },
+        telemetry = {
+          enable = false,
+        },
       },
     },
   },
+  jsonls = {},
 }
 
--- JSON
--- npm -g install vscode-langservers-extracted
-nvim_lsp.jsonls.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
+-- Loop through the servers table and set up each server
+for server, config in pairs(servers) do
+  config.capabilities = capabilities
+  config.on_attach = on_attach
+  nvim_lsp[server].setup(config)
+end
