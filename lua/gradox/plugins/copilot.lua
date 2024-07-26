@@ -33,6 +33,7 @@ return {
           sql        = true,
           yaml       = true,
           markdown   = true,
+          go         = false,
         }
       })
     end,
