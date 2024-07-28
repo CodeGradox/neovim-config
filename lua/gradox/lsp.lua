@@ -9,9 +9,6 @@ local nvim_lsp = require("lspconfig")
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local on_attach = function(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
   -- Mappings
   local opts = { buffer = bufnr, remap = true, silent = true }
   -- Go to definition.
@@ -26,6 +23,12 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>dp', function() vim.diagnostic.goto_next() end, opts)
   -- Show all diagnostics.
   vim.keymap.set('n', '<space>dq', function() vim.diagnostic.setloclist() end, opts)
+  -- Rename symbol under the cursor.
+  vim.keymap.set('n', '<space>rn', function() vim.lsp.buf.rename() end, opts)
+
+  if client.server_capabilities.inlayHintProvider then
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+  end
 end
 
 vim.diagnostic.config({
@@ -34,11 +37,6 @@ vim.diagnostic.config({
   virtual_lines = false,
 })
 
--- Configuration for diagnostic settings.
-vim.diagnostic.config({
-  virtual_text  = true,
-  virtual_lines = false,
-})
 
 -- Table of LSP servers and their configurations.
 local servers = {
@@ -63,7 +61,7 @@ local servers = {
           version = 'LuaJIT',
         },
         diagnostics = {
-          globals = {'vim'},
+          globals = { 'vim' },
         },
         workspace = {
           library = vim.api.nvim_get_runtime_file("", true),
@@ -79,10 +77,37 @@ local servers = {
     settings = {
       gopls = {
         analyses = {
+          append = true,
+          assign = true,
+          atomic = true,
+          atomicalign = true,
+          bools = true,
+          composites = true,
+          defers = true,
+          deprecated = true,
+          fillreturns = true,
+          infertypeargs = true,
+          nilness = true,
+          printf = true,
+          shadow = true,
+          shift = true,
+          simplifyrange = true,
+          simplifyslice = true,
+          sortslice = true,
+          tests = true,
+          unreachable = true,
           unusedparams = true,
+          unusedvariable = true,
+          unusedwrite = true,
         },
-        staticcheck = true,
         gofumpt = true,
+        hints = {
+          -- compositeLiteralFields = true,
+          -- parameterNames = true,
+          rangeVariableTypes = true,
+        },
+        -- usePlaceholders = true,
+        staticcheck = true,
       },
     },
   },
