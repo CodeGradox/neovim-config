@@ -11,8 +11,20 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local on_attach = function(client, bufnr)
   -- Mappings
   local opts = { buffer = bufnr, remap = true, silent = true }
+
   -- Go to definition.
-  vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
+  vim.keymap.set(
+    'n',
+    'gd',
+    function()
+      vim.lsp.buf.definition()
+      -- Delay the centering of the cursor to allow the LSP to jump to the definition.
+      vim.defer_fn(function()
+        vim.cmd("normal! zz")
+      end, 0)
+    end,
+    opts
+  )
   -- Hover over symbol to see documentation.
   vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
   -- Show line diagnostics.
