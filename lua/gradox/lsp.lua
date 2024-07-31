@@ -111,6 +111,8 @@ local servers = {
       },
     },
   },
+  cssls = {},
+  html = {},
 }
 
 -- Loop through the servers table and set up each server
