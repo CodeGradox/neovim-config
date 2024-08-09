@@ -26,6 +26,8 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gv', function() vim.cmd[[vsplit]]; go_to_definition() end, opts)
   -- Split window horizontally and go to definition.
   vim.keymap.set('n', 'gs', function() vim.cmd[[split]]; go_to_definition() end, opts)
+  -- Loop up references.
+  vim.keymap.set('n', 'gh', function() vim.lsp.buf.references() end, opts)
   -- Hover over symbol to see documentation.
   vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
   -- Show line diagnostics.
