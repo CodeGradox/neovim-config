@@ -15,7 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 local opts = {
   checker = {
     -- Automatically check for plugin updates.
-    enabled = true,
+    enabled = false,
     concurrency = 8,
     notify = false,
     -- Check for updates every hour.
