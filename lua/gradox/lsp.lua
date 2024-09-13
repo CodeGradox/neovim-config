@@ -60,7 +60,7 @@ local servers = {
       debounce_text_changes = 150,
     }
   },
-  tsserver = {},
+  ts_ls = {},
   vuels = {
     settings = {
       vetur = {
