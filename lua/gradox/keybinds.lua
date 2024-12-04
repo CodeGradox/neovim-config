@@ -62,7 +62,7 @@ tmap("<C-q>", "<C-\\><C-n>")
 vmap("J", ":m '>+1<CR>gv=gv")
 vmap("K", ":m '<-2<CR>gv=gv")
 
-  -- Vim mappings for copying/pasting text to the os specific clipboard.
+-- Vim mappings for copying/pasting text to the os specific clipboard.
 vmap("cp", "\"+y")
 
 -- Toggle NvimTree
