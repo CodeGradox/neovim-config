@@ -5,7 +5,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = "*",
   callback = function ()
     local filetype = vim.bo.filetype
-    if filetype == "rust" or filetype == "go" then
+    if filetype == "rust" or filetype == "go" or filetype == "yaml" then
       vim.lsp.buf.format()
     else
       vim.cmd([[%s/\\s\\+$//e]])

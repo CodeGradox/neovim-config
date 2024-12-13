@@ -61,14 +61,19 @@ local servers = {
     }
   },
   ts_ls = {},
-  vuels = {
+  -- volar = {}, -- Vue language server
+  yamlls = {
     settings = {
-      vetur = {
-        ignoreProjectWarning = true
+      yaml = {
+        format = {
+          enable = true,
+        },
+        keyOrdering = true,
+        validate = true,
+        completion = true,
       }
     }
   },
-  yamlls = {},
   lua_ls = {
     settings = {
       Lua = {
