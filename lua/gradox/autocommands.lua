@@ -45,6 +45,11 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufEnter" }, {
   command = "set syntax=ruby",
 })
 
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufEnter" }, {
+  pattern = { "*.slim" },
+  command = "set ft=slim",
+})
+
 -- Use internal formatting for bingings like `gq`.
 vim.api.nvim_create_autocmd({ "LspAttach" }, {
   callback = function(args)
