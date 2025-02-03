@@ -46,11 +46,7 @@ local on_attach = function(client, bufnr)
   end
 end
 
-vim.diagnostic.config({
-  virtual_text  = true,
-  -- Don't use the fancy LSP lines by default. Toggle it with a keybind.
-  virtual_lines = false,
-})
+vim.diagnostic.config({ virtual_text = true })
 
 
 -- Table of LSP servers and their configurations.
