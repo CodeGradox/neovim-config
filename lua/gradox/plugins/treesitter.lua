@@ -52,6 +52,7 @@ return {
         highlight = {
           -- Enable better syntax highlights.
           enable = true,
+          disable = { "slim" },
           additional_vim_regex_highlighting = true,
         },
         textobjects = {
