@@ -30,3 +30,6 @@ require("lazy").setup("gradox.plugins", opts)
 require("gradox.settings")
 require("gradox.abbreviations")
 require("gradox.cmp")
+
+-- Disable LSP logging for now.
+vim.lsp.set_log_level("off")
