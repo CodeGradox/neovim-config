@@ -31,6 +31,8 @@ nmap("<leader>p", ":Telescope git_files<cr>")
 nmap("<leader>p", ":Telescope git_files<cr>")
 nmap("<leader>o", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 -- nmap("<leader>gco", ":Telescope git_branches<cr>")
+nmap("<leader>1", ":Telescope lsp_document_symbols<cr>")
+nmap("<leader>2", ":Telescope lsp_workspace_symbols<cr>")
 
 -- Search for the text under the cursor.
 vim.keymap.set("n", "<leader>s", function()
@@ -80,4 +82,4 @@ nmap("<leader>b", ":Gitsigns blame_line<cr>")
 -- Lazygit
 vim.keymap.set("n", "<leader>gg", function()
   vim.cmd("LazyGit")
-end, { desc = "LazyGit"})
+end, { desc = "LazyGit" })
