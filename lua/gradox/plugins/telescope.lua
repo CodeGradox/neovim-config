@@ -20,6 +20,16 @@ return {
 
       require("telescope").setup {
         pickers = {
+          buffers = {
+            sort_lastused = true,
+            ignore_current_buffer = true,
+            show_all_buffers = false,
+            mappings = {
+              n = {
+                ["d"] = require("telescope.actions").delete_buffer,
+              },
+            }
+          },
           find_files = {
             theme = "dropdown",
             previewer = false,
