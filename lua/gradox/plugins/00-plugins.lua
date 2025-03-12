@@ -55,4 +55,6 @@ return {
   -- cr<space> - space case
   -- crt       - Title Case
   "tpope/vim-abolish",
+
+  "folke/zen-mode.nvim",
 }
