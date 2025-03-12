@@ -2,6 +2,7 @@ return {
   {
     -- Copilot is a plugin that suggests code based on the current file.
     "zbirenbaum/copilot.lua",
+    -- enabled = true,
     cmd = "Copilot",
     event = "InsertEnter",
     config = function()
@@ -24,17 +25,9 @@ return {
           },
         },
         filetypes = {
-          ruby       = true,
-          javascript = true,
-          python     = true,
-          slim       = true,
-          html       = true,
-          erb        = true,
-          sql        = true,
-          yaml       = true,
-          markdown   = true,
-          go         = false,
-        }
+          erb = false,
+          slim = false,
+        },
       })
     end,
   }
